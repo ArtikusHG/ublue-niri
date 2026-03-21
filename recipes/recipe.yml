@@ -6,8 +6,8 @@ name: ublue-niri
 description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/silverblue-main
-image-version: 42 # latest is also supported if you want new updates ASAP
+base-image: ghcr.io/ublue-os/base-main
+image-version: latest # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
@@ -20,17 +20,24 @@ modules:
   - type: dnf
     repos:
       copr:
-        - atim/starship
+        - solopasha/hyprland
     install:
       packages:
-        - micro
-        - starship
+        - niri
+        - swayidle
+        - swaybg
+        - mako
+        - hyprlock
+        - xwayland-satellite
+        - foot
+        - fish
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
         # "firefox" is the main package, "firefox-langpacks" is a dependency
         - firefox
         - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+        - alacritty
 
   - type: default-flatpaks
     configurations:
@@ -38,7 +45,6 @@ modules:
         scope: system
         # If no repo information is specified, Flathub will be used by default
         install: # system flatpaks we want all users to have and not remove
-          - org.mozilla.firefox
           - org.gnome.Loupe
       - scope: user # Also add Flathub user repo, but no user packages
 
