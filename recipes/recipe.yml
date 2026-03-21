@@ -31,6 +31,11 @@ modules:
         - xwayland-satellite
         - foot
         - fish
+        - nautilus
+        - nautilus-extensions
+        - papers-nautilus
+        - papers-previewer
+        - papers-thumbnailer
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
