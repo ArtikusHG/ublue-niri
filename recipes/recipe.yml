@@ -35,6 +35,7 @@ modules:
         - papers-nautilus
         - papers-previewer
         - papers-thumbnailer
+        - nmtui
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
