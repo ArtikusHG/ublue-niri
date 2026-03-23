@@ -20,7 +20,7 @@ modules:
     repos:
       copr:
         - solopasha/hyprland
-        - bieszczaders/kernel-cachyos-lto
+        - bieszczaders/kernel-cachyos
     install:
       packages:
         - kernel-cachyos-rt
