@@ -20,8 +20,9 @@ modules:
     repos:
       copr:
         - solopasha/hyprland
+        - bieszczaders/kernel-cachyos
     replace:
-      - from-repo: copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos
+      - from-repo: kernel-cachyos
         packages:
           - old: kernel
             new: kernel-cachyos-rt
