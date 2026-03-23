@@ -24,6 +24,9 @@ modules:
     install:
       packages:
         - kernel-cachyos-rt
+        - kernel-cachyos-rt-core
+        - kernel-cachyos-rt-modules
+        - kernel-cachyos-rt-devel-matched
         - niri
         - swayidle
         - swaybg
