@@ -25,7 +25,8 @@ modules:
       - kernel
       - kernel-core
       - kernel-modules
-      - kernel-devel-matched
+      - kernel-modules-core
+      - kernel-modules-extra
   - type: dnf
     repos:
       copr:
