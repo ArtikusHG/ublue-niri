@@ -37,6 +37,7 @@ modules:
         - papers-thumbnailer
         - nmtui
         - kernel-tools
+        - imv
       exclude:
         - alacritty
     remove:
