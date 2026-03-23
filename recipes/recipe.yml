@@ -16,22 +16,20 @@ modules:
     files:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+  - type: rpm-ostree
+    repos:
+      - https://copr.fedorainfracloud.org/coprs/bieszczaders/kernel-cachyos/repo/fedora-%OS_VERSION%/bieszczaders-kernel-cachyos-fedora-%OS_VERSION%.repo # when including COPR repos, use the %OS_VERSION% magic string
+    install:
+      - kernel-cachyos-rt
+    remove:
+      - kernel
+      - kernel-core
+      - kernel-modules
+      - kernel-devel-matched
   - type: dnf
     repos:
       copr:
         - solopasha/hyprland
-        - bieszczaders/kernel-cachyos
-    replace:
-      - from-repo: copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos
-        packages:
-          - old: kernel
-            new: kernel-cachyos-rt
-          - old: kernel-core
-            new: kernel-cachyos-rt-core
-          - old: kernel-modules
-            new: kernel-cachyos-rt-modules
-          - old: kernel-devel-matched
-            new: kernel-cachyos-rt-devel-matched
     install:
       packages:
         - niri
