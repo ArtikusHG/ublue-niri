@@ -20,8 +20,10 @@ modules:
     repos:
       copr:
         - solopasha/hyprland
+        - bieszczaders/kernel-cachyos-lto
     install:
       packages:
+        - kernel-cachyos-rt
         - niri
         - swayidle
         - swaybg
