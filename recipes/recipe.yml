@@ -20,6 +20,7 @@ modules:
     repos:
       copr:
         - solopasha/hyprland
+        - v8v88v8v88/helium
     install:
       packages:
         - niri
@@ -38,6 +39,7 @@ modules:
         - nmtui
         - kernel-tools
         - imv
+        - helium
       exclude:
         - alacritty
     remove:
