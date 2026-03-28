@@ -1,0 +1,23 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Helium
+Icon=helium
+TryExec=/usr/bin/helium
+Exec=env DESKTOPINTEGRATION=1 /usr/bin/helium %U
+Terminal=false
+MimeType=application/pdf;application/rdf+xml;application/rss+xml;application/xhtml+xml;application/xhtml_xml;application/xml;image/gif;image/jpeg;image/png;image/webp;text/html;text/xml;x-scheme-handler/http;x-scheme-handler/https;
+Categories=Network;WebBrowser;
+StartupNotify=true
+StartupWMClass=helium
+Actions=new-window;new-private-window;
+
+[Desktop Action new-window]
+Name=New Window
+Icon=helium
+Exec=/usr/bin/helium
+
+[Desktop Action new-private-window]
+Name=New Incognito Window
+Icon=helium
+Exec=/usr/bin/helium --incognit
