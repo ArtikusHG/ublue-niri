@@ -42,6 +42,11 @@ modules:
         - helium
       exclude:
         - alacritty
+    replace:
+      - from-repo: fedora
+        packages:
+          - old: sudo
+            new: sudo-rs
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
