@@ -63,5 +63,5 @@ modules:
     - custom-kernel.sh
     - sudo-rs.sh
     - uutils-coreutils.sh
-    - brush-shell.sh
+  #  - brush-shell.sh --- commented out because replacing /bin/sh with brush breaks some functionality in Fedora, i'm working on resolving this
   - type: signing # this sets up the proper policy & signing files for signed images to work full
