@@ -62,4 +62,5 @@ modules:
     scripts:
     - custom-kernel.sh
     - sudo-rs.sh
+    - uutils-coreutils.sh
   - type: signing # this sets up the proper policy & signing files for signed images to work full
