@@ -53,6 +53,13 @@ modules:
         - initscripts-service
         - dhcp-client
         - vim
+        - vim-X11
+        - vim-common
+        - vim-data
+        - vim-default-editor
+        - vim-enhanced
+        - vim-filesystem
+        - vim-minimal
         - nano
   #- type: default-flatpaks
   #  configurations:
