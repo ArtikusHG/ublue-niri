@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Remove Fedora kernel & remove leftover files
-dnf -y remove \
+dnf -y remove --noautoremove \
     kernel \
     kernel-* && \
 rm -r -f /usr/lib/modules/*
