@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 
 # Remove Fedora kernel & remove leftover files
-dnf -y remove --noautoremove \
-    kernel \
-    kernel-* && \
+#dnf -y remove kernel kernel-headers kernel-core kernel-modules kernel-modules-core kernel-modules-extra kernel-tools kernel-tools-libs
+rpm =e --nodeps kernel kernel-headers kernel-core kernel-modules kernel-modules-core kernel-modules-extra kernel-tools kernel-tools-libs
 rm -r -f /usr/lib/modules/*
 
 # Install dnf-plugins-core just in case
