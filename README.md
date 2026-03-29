@@ -2,7 +2,17 @@
 
 See the [BlueBuild docs](https://blue-build.org/how-to/setup/) for quick setup instructions for setting up your own repository based on this template.
 
-This is my personal image of Fedora Atomic with the Niri and a few other useful utilities in core. That's not the interesting part. The interesting part is that this uses kernel-cachyos, sudo-rs and uutils! You can see the scripts and the recipe to find out how I achieved this (quite simply actually) and maybe use it on your own system, but I do not guarantee stability! Everything is highly experimental at this point and things might break. Also, you probably shouldn't use this image directly if you happen to stumble accross it - if you want something similar, a good idea would be to fork it and make your own one.
+This is my personal image of Fedora Atomic with the Niri and a few other useful utilities in core. That's not the interesting part. The interesting part is that this uses kernel-cachyos, uutils and many other rust tools! You can see the scripts and the recipe to find out how I achieved this (quite simply actually) and maybe use it on your own system, but I do not guarantee stability! Everything is highly experimental at this point and things might break. Also, you probably shouldn't use this image directly if you happen to stumble accross it - if you want something similar, a good idea would be to fork it and make your own one.
+
+Currently used rust alternatives:
+
+- `GNU coreutils` -> `[uutils coreutils](https://github.com/uutils/coreutils)`
+- `sudo` -> `[sudo-rs](https://github.com/trifectatechfoundation/sudo-rs)`
+- `chrony` -> `[ntpd-rs](https://github.com/pendulum-project/ntpd-rs)`
+- `bash` -> `[brush](https://github.com/reubeno/brush)`
+- `sed` -> `[red](https://github.com/vyavdoshenko/red)`
+
+I'm closely monitoring uutils progress on other projects, such as `diffutils`, `findutils`, `procps`, `hostname` and many others! Also actively looking for a GNU/POSIX compatible alternative to `grep` and `awk`, if you happen to know one - tell me! (not ripgrep, it's great but not GNU compatible and will probably break my system)
 
 ## Installation
 
