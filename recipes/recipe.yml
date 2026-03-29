@@ -42,6 +42,7 @@ modules:
         - ntpd-rs
         - imv
         - helium
+        - helix
       exclude:
         - alacritty
     remove:
@@ -51,6 +52,8 @@ modules:
         - chrony
         - initscripts-service
         - dhcp-client
+        - vim
+        - nano
   #- type: default-flatpaks
   #  configurations:
   #    - notify: true # Send notification after install/uninstall is finished (true/false)
