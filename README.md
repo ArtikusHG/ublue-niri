@@ -11,6 +11,7 @@ Currently used rust alternatives:
 - `chrony` -> [ntpd-rs](https://github.com/pendulum-project/ntpd-rs)
 - `bash` -> [brush](https://github.com/reubeno/brush)
 - `sed` -> [red](https://github.com/vyavdoshenko/red)
+- `vim/nano` -> [helix](https://github.com/helix-editor/helix)
 
 I'm closely monitoring uutils progress on other projects, such as `diffutils`, `findutils`, `procps`, `hostname` and many others! Also actively looking for a GNU/POSIX compatible alternative to `grep` and `awk`, if you happen to know one - tell me! (not ripgrep, it's great but not GNU compatible and will probably break my system)
 
