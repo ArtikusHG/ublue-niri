@@ -71,4 +71,5 @@ modules:
     - sudo-rs.sh
     - uutils-coreutils.sh
     - brush-shell.sh
+    - sed-rust.sh
   - type: signing # this sets up the proper policy & signing files for signed images to work full
