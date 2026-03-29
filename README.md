@@ -6,11 +6,11 @@ This is my personal image of Fedora Atomic with the Niri and a few other useful 
 
 Currently used rust alternatives:
 
-- `GNU coreutils` -> `[uutils coreutils](https://github.com/uutils/coreutils)`
-- `sudo` -> `[sudo-rs](https://github.com/trifectatechfoundation/sudo-rs)`
-- `chrony` -> `[ntpd-rs](https://github.com/pendulum-project/ntpd-rs)`
-- `bash` -> `[brush](https://github.com/reubeno/brush)`
-- `sed` -> `[red](https://github.com/vyavdoshenko/red)`
+- `GNU coreutils` -> [uutils coreutils](https://github.com/uutils/coreutils)
+- `sudo` -> [sudo-rs](https://github.com/trifectatechfoundation/sudo-rs)
+- `chrony` -> [ntpd-rs](https://github.com/pendulum-project/ntpd-rs)
+- `bash` -> [brush](https://github.com/reubeno/brush)
+- `sed` -> [red](https://github.com/vyavdoshenko/red)
 
 I'm closely monitoring uutils progress on other projects, such as `diffutils`, `findutils`, `procps`, `hostname` and many others! Also actively looking for a GNU/POSIX compatible alternative to `grep` and `awk`, if you happen to know one - tell me! (not ripgrep, it's great but not GNU compatible and will probably break my system)
 
