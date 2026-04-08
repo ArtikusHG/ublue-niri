@@ -53,6 +53,7 @@ ln -sf /usr/bin/coreutils /usr/bin/mkdir
 ln -sf /usr/bin/coreutils /usr/bin/mkfifo
 ln -sf /usr/bin/coreutils /usr/bin/mknod
 ln -sf /usr/bin/coreutils /usr/bin/mktemp
+ln -sf /usr/bin/coreutils /usr/bin/more
 ln -sf /usr/bin/coreutils /usr/bin/mv
 ln -sf /usr/bin/coreutils /usr/bin/nice
 ln -sf /usr/bin/coreutils /usr/bin/nl
