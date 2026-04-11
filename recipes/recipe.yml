@@ -81,6 +81,7 @@ modules:
     - custom-kernel.sh
     - sudo-rs.sh
     - uutils-coreutils.sh
+    - uutils-findutils.sh
     - brush-shell.sh
     - sed-rust.sh
     - fsel.sh
