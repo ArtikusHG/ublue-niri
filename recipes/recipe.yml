@@ -21,6 +21,7 @@ modules:
       copr:
         - solopasha/hyprland
         - v8v88v8v88/helium
+        - yalter/niri
     install:
       packages:
         - niri
