@@ -73,8 +73,6 @@ modules:
   #    - scope: user # Also add Flathub user repo, but no user packages
   - type: systemd
     system:
-      disabled:
-        - chronyd
       enabled:
         - ntpd-rs
   - type: script
