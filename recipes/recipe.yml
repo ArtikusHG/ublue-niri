@@ -47,6 +47,7 @@ modules:
       exclude:
         - alacritty
         - fuzzel
+        - waybar
     remove:
       packages:
         - firefox
