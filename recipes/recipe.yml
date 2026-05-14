@@ -44,6 +44,8 @@ modules:
         - imv
         - helium
         - helix
+        - yt-dlp
+        - wlsunset
       exclude:
         - alacritty
         - fuzzel
