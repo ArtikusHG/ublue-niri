@@ -46,6 +46,7 @@ modules:
         - helix
         - yt-dlp
         - wlsunset
+        - gvfs-mtp
       exclude:
         - alacritty
         - fuzzel
