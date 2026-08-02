@@ -46,6 +46,7 @@ modules:
         - yt-dlp
         - wlsunset
         - gvfs-mtp
+        - libatomic
       exclude:
         - alacritty
         - fuzzel
