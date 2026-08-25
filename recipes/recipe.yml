@@ -19,7 +19,7 @@ modules:
   - type: dnf
     repos:
       copr:
-        - solopasha/hyprland
+        - nett00n/hyprland
         - v8v88v8v88/helium
         - yalter/niri
     install:
