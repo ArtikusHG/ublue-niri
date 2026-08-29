@@ -99,7 +99,7 @@ modules:
         folder: helium
         postinstall: |
           ln -s /usr/share/helium /usr/bin/helium
-          cp /usr/share/helium.desktop /usr/share/applications
+          cp /usr/share/helium/helium.desktop /usr/share/applications
           cp /usr/share/helium/product_logo_256.png /usr/share/icons/hicolor/256x256/apps
   - type: systemd
     system:
