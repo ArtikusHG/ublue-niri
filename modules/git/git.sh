@@ -49,6 +49,7 @@ for package in "${PACKAGES[@]}"; do
         find "gittmp" -type f -exec sh -c '
             for file do
                 if file "$file" | grep -q "ELF.*executable"; then
+					echo "$file"
                     install -m 755 "$file" /usr/bin
 		fi
             done
