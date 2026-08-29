@@ -67,6 +67,24 @@ modules:
   #      install: # system flatpaks we want all users to have and not remove
   #        - org.gnome.Loupe
   #    - scope: user # Also add Flathub user repo, but no user packages
+    - type: git
+      packages:
+      - repo: uutils/coreutils
+        type: bin
+        postinstall: |
+          for cmd in $(coreutils --list); do
+            ln -sf /usr/bin/coreutils "/usr/bin/$cmd"
+          done
+      - repo: uutils/findutils
+        type: bin
+      - repo: uutils/red
+        type: bin
+        postinstall: ln -sf /usr/bin/red /usr/bin/sed
+      - repo: Mjoyufull/fsel
+        type: bin
+      - repo: reubeno/brush
+        type: bin
+        postinstall: ln -sf /usr/bin/brush /usr/bin/bash
   - type: systemd
     system:
       enabled:
