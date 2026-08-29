@@ -67,10 +67,10 @@ modules:
   #    - scope: user # Also add Flathub user repo, but no user packages
   - type: git
     source: local
-        packages:
+    packages:
       - repo: uutils/coreutils
         files:
-          - coreutils
+        - coreutils
         postinstall: |
           for cmd in $(coreutils --list); do
             ln -sf /usr/bin/coreutils "/usr/bin/$cmd"
