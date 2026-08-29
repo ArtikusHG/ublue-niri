@@ -22,15 +22,11 @@ for package in "${PACKAGES[@]}"; do
     7z x "$file" -o"gittmp"
 	tarfile=$(find gittmp -maxdepth 1 -name '*.tar' -print -quit)
 	if [[ -n "$tarfile" ]]; then
-		mapfile -t components < <(
-    		tar -tf "$tarfile" |
-    		awk -F/ 'NF { print $1 }' |
-    		sort -u
-		)
-		if [ "${#components[@]}" -eq 1 ]; then
-		    tar -xf "$tarfile" -C gittmp --strip-components=1
-		else
-    		tar -xf "$tarfile" -C gittmp
+		tar -xf "$tarfile" -C gittmp
+		dirs=(gittmp/*/)
+		if [ "${#dirs[@]}" -eq 1 ] && [ -d "${dirs[0]}" ]; then
+    		mv "${dirs[0]}"* gittmp/
+    		rm -rf "${dirs[0]}"
 		fi
 		rm "$tarfile"
 	else
