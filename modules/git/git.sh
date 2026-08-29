@@ -8,7 +8,7 @@ default_regex='^https://(?!.*musl)(?=.*(x86_64|amd64))(?=.*linux).*\.((tar(\.(gz
 for package in "${PACKAGES[@]}"; do
     repo=$(jq -r '.repo' <<< "$package")
     regex=$(jq -r --arg default "$default_regex" '.regex // $default' <<< "$package")
-    release_regex=$(jq -r '.release-regex // empty' <<< "$package")
+    release_regex=$(jq -r '.["release-regex"] // empty' <<< "$package")
     type=$(jq -r '.type' <<< "$package")
     files=$(jq -r '.files // empty | .[]' <<< "$package")
 	postinstall=$(jq -r '.postinstall // empty' <<< "$package")
