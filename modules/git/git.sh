@@ -30,7 +30,7 @@ for package in "${PACKAGES[@]}"; do
 		if [ "${#components[@]}" -eq 1 ]; then
 		    tar -xf "$tarfile" -C gittmp --strip-components=1
 		else
-    		tar -xf "$archive" -C gittmp
+    		tar -xf "$tarfile" -C gittmp
 		fi
 		rm "$tarfile"
 	else
