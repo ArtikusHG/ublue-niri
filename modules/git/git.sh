@@ -19,7 +19,12 @@ for package in "${PACKAGES[@]}"; do
 
     mkdir gittmp
     7z x "$file" -o"gittmp"
-    tar -xf gittmp/*.tar -C gittmp
+	tarfile=$(find gittmp -maxdepth 1 -name '*.tar' -print -quit)
+	if [[ -n "$tarfile" ]]; then
+    	tar -xf "$tarfile" -C gittmp
+	else
+        echo -e "\033[38;5;208mNo tar files found, assuming zip or single binary!\033[0m"
+	fi
 
     if [[ -n "$files" ]]; then
         for filename in $files; do
