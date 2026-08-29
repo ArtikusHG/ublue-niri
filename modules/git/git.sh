@@ -22,7 +22,17 @@ for package in "${PACKAGES[@]}"; do
     7z x "$file" -o"gittmp"
 	tarfile=$(find gittmp -maxdepth 1 -name '*.tar' -print -quit)
 	if [[ -n "$tarfile" ]]; then
-    	tar -xf "$tarfile" -C gittmp
+		mapfile -t components < <(
+    		tar -tf "$tarfile" |
+    		awk -F/ 'NF { print $1 }' |
+    		sort -u
+		)
+		if [ "${#components[@]}" -eq 1 ]; then
+		    tar -xf "$tarfile" -C gittmp --strip-components=1
+		else
+    		tar -xf "$archive" -C gittmp
+		fi
+		rm "gittmp/$tarfile"
 	else
         echo -e "\033[38;5;208mNo tar files found, assuming zip or single binary!\033[0m"
 	fi
