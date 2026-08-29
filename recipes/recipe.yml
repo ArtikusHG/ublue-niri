@@ -31,7 +31,6 @@ modules:
         - hyprlock
         - xwayland-satellite
         - foot
-        - fish
         - nautilus
         - nautilus-extensions
         - papers-nautilus
@@ -43,7 +42,6 @@ modules:
         - ntpd-rs
         - imv
         - helium
-        - yt-dlp
         - wlsunset
         - gvfs-mtp
         - libatomic
@@ -69,23 +67,32 @@ modules:
   #    - scope: user # Also add Flathub user repo, but no user packages
   - type: git
     source: local
-    packages:
-    - repo: uutils/coreutils
-      type: bin
-      postinstall: |
-        for cmd in $(coreutils --list); do
-          ln -sf /usr/bin/coreutils "/usr/bin/$cmd"
+        packages:
+      - repo: uutils/coreutils
+        files:
+          - coreutils
+        postinstall: |
+          for cmd in $(coreutils --list); do
+            ln -sf /usr/bin/coreutils "/usr/bin/$cmd"
           done
-    - repo: uutils/findutils
-      type: bin
-    - repo: uutils/red
-      type: bin
-      postinstall: ln -sf /usr/bin/red /usr/bin/sed
-    - repo: Mjoyufull/fsel
-      type: bin
-    - repo: reubeno/brush
-      type: bin
-      postinstall: ln -sf /usr/bin/brush /usr/bin/bash
+      - repo: uutils/findutils
+        files:
+          - find
+          - locate
+          - updatedb
+          - xargs
+      - repo: uutils/red
+        postinstall: ln -sf /usr/bin/red /usr/bin/sed
+      - repo: Mjoyufull/fsel
+      - repo: fish-shell/fish-shell
+      - repo: reubeno/brush
+        postinstall: ln -sf /usr/bin/brush /usr/bin/bash
+      - repo: yt-dlp/yt-dlp
+        type: custom
+        regex: yt-dlp_linux.zip
+        files:
+          - yt-dlp
+        postinstall: mv /usr/bin/yt-dlp_linux /usr/bin/yt-dlp
   - type: systemd
     system:
       enabled:
@@ -94,9 +101,4 @@ modules:
     scripts:
     - custom-kernel.sh
     - sudo-rs.sh
-    - uutils-coreutils.sh
-    - uutils-findutils.sh
-    - brush-shell.sh
-    - sed-rust.sh
-    - fsel.sh
   - type: signing # this sets up the proper policy & signing files for signed images to work full
