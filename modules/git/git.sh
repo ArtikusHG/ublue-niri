@@ -10,10 +10,11 @@ for package in "${PACKAGES[@]}"; do
     regex=$(jq -r --arg default "$default_regex" '.regex // $default' <<< "$package")
     type=$(jq -r '.type' <<< "$package")
     files=$(jq -r '.files // empty | .[]' <<< "$package")
-    postinstall=$(jq -r '.postinstall // empty' <<< "$package")
+	postinstall=$(jq -r '.postinstall // empty' <<< "$package")
 
     echo -e "\033[32mInstalling $repo...\033[0m"
-    url="$(curl -s "https://api.github.com/repos/$repo/releases/latest" | jq -r '.assets[].browser_download_url' | grep -P "$regex" | head -n1)"
+	data="$(curl -s "https://api.github.com/repos/$repo/releases/latest")"
+	url="$(echo "$data" | jq -r '.assets[].browser_download_url' | grep -P "$regex" | head -n1)"
     file="${url##*/}"
     curl -LO "$url"
 
@@ -30,6 +31,10 @@ for package in "${PACKAGES[@]}"; do
         for filename in $files; do
             find "gittmp" -type f -name "$filename" -exec install -m 755 {} /usr/bin \;
         done
+	elif [[ "$type" == "share" ]]; then
+	    folder=$(jq -r '.folder' <<< "$package")
+		mkdir /usr/share/$folder
+		cp -r gittmp/* /usr/share/$folder
     elif [[ "$type" != "custom" ]]; then
         find "gittmp" -type f -exec sh -c '
             for file do
@@ -46,7 +51,7 @@ for package in "${PACKAGES[@]}"; do
     fi
 
     rm -rf gittmp
-    echo $file >> /etc/git-versions
+	echo "$file $(echo "$data" | jq -r '.tag_name')" >> /etc/git-versions
     rm $file
 
     echo -e "\033[32mSuccessfully installed $repo!\033[0m"
