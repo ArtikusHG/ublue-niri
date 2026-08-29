@@ -14,7 +14,7 @@ dnf -y install --setopt=install_weak_deps=False \
 dnf -y copr enable bieszczaders/kernel-cachyos
 
 # Install CachyOS LTO kernel & akmods
-dnf -y install --setopt=install_weak_deps=False kernel-cachyos-rt
+dnf -y install --setopt=install_weak_deps=False kernel-cachyos-rt-7.2.0-cachyos1.fc44.x86_64
 
 
 # Manually build modules, run depmod & generate initramfs
