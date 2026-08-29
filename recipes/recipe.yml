@@ -19,8 +19,7 @@ modules:
   - type: dnf
     repos:
       copr:
-        - nett00n/hyprland
-        - v8v88v8v88/helium
+        - lionheartp/Hyprland
         - yalter/niri
     install:
       packages:
@@ -41,7 +40,6 @@ modules:
         - sudo-rs
         - ntpd-rs
         - imv
-        - helium
         - wlsunset
         - gvfs-mtp
         - libatomic
@@ -96,6 +94,13 @@ modules:
         regex: yt-dlp_linux.zip
         folder: yt-dlp
         postinstall: ln -s /usr/share/yt-dlp/yt-dlp_linux /usr/bin/yt-dlp
+      - repo: imputnet/helium-linux
+        type: share
+        folder: helium
+        postinstall: |
+          ln -s /usr/share/helium /usr/bin/helium
+          cp /usr/share/helium.desktop /usr/share/applications
+          cp /usr/share/helium/product_logo_256.png /usr/share/icons/hicolor/256x256/apps
   - type: systemd
     system:
       enabled:
