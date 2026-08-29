@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+b=/sys/class/backlight/acpi_video0/brightness
+m=/sys/class/backlight/acpi_video0/max_brightness
+
+cur=$(<"$b")
+max=$(<"$m")
+
+if [[ $1 == + ]]; then
+    new=$((cur + $2))
+else
+    new=$((cur - $2))
+fi
+
+(( new > max )) && new=$max
+(( new < 0 )) && new=0
+
+echo "$new" > "$b"

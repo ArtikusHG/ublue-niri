@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# Give options to rofi and save choice
+#chosen="$(echo -e "shutdown\nreboot\nsuspend\nlogout" | fuzzel -d -f=':size=20' --line-height=35 -l 4)"
+chosen="$(echo -e "shutdown\nreboot\nsuspend\nlogout" | fsel --dmenu)"
+
+case "$chosen" in
+  "shutdown")
+    systemctl poweroff
+    ;;
+  "reboot")
+    systemctl reboot
+    ;;
+  "suspend")
+    systemctl suspend
+    ;;
+  "logout")
+    pkill -f "ctrl_layout|makobar" &&  niri msg action quit
+    ;;
+  *)
+    exit 0
+    ;;
+esac

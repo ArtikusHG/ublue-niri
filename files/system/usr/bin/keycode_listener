@@ -1,0 +1,1 @@
+libinput debug-events --device /dev/input/event3 --show-keycodes

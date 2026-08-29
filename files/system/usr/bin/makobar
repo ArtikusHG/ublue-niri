@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+BAT="/sys/class/power_supply/BAT0/"
+
+check_status() {
+	echo before
+	timeout 1 mako-dismiss-by-appname battery-manager
+	echo after
+
+	status=$(<"$BAT/status")
+	if [ "$status" = "Discharging" ]; then
+		capacity=$(<"$BAT/capacity")
+  	if [ "$capacity" -lt 10 ]; then
+	    	notify-send -a battery-manager "Very low battery!" "Plug in right now!"
+  	elif [ "$capacity" -lt 20 ]; then
+    		notify-send -a battery-manager "Low battery"
+  	fi
+  fi
+}
+
+while true; do
+	check_status
+	notify-send -a bar -t 60100 $(date +"%H:%M") "<big><b>$(date +'%b %d, %Y')</b></big>"
+	notify-send -a bar-bottom -t 60100 "$(<$BAT/capacity)%"
+	#sleep $(awk "BEGIN {print 60 - $(date +%S.%N)}")
+	sleep $((60 - 10#$(date +%S)))
+done &
+
+udevadm monitor --subsystem-match=power_supply | grep --line-buffered "^UDEV.*AC" | while read -r line; do
+	# this stupid workaround is needed because the udev monitor updates earlier than the status file in /sys
+	check_status
+	sleep 2
+	check_status
+done

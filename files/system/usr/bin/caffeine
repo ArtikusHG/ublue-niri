@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+
+if [ -e /tmp/caffeine ]; then
+    notify-send "Caffeine stopped" -t 3000
+    rm /tmp/caffeine
+else
+    notify-send "Caffeine running" -t 3000
+    touch /tmp/caffeine
+fi

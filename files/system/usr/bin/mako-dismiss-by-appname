@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+makoctl list | awk '/^Notification/{i=$2}/App name: '"$1"'$/{gsub(":","",i); print i}' | xargs -r -n1 makoctl dismiss -n

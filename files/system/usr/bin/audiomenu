@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+# written (almost) entirely by chatgpt but works perfectly, idk why :)
+
+default_sink="$(pactl get-default-sink)"
+
+menu=$(
+  pw-dump | jq -r --arg def "$default_sink" '.[]
+    | select(.type=="PipeWire:Interface:Node")
+    | select(.info.props["media.class"]=="Audio/Sink")
+    | .id as $id
+    | .info.props["node.name"] as $name
+    | .info.props["node.description"] as $desc
+    | if $name == $def
+        then "\($id)|* \($desc)"
+        else "\($id)|\($desc)"
+      end
+  '
+)
+
+choice=$(echo "$menu" | cut -d'|' -f2 | fsel --dmenu)
+
+[ -z "$choice" ] && exit 0
+
+echo "$menu" | while IFS="|" read -r id desc; do
+  if [ "$desc" = "$choice" ]; then
+    wpctl set-default "$id"
+    exit 0
+  fi
+done
