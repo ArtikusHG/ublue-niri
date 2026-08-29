@@ -32,7 +32,7 @@ for package in "${PACKAGES[@]}"; do
 		else
     		tar -xf "$archive" -C gittmp
 		fi
-		rm "gittmp/$tarfile"
+		rm "$tarfile"
 	else
         echo -e "\033[38;5;208mNo tar files found, assuming zip or single binary!\033[0m"
 	fi
