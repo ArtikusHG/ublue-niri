@@ -94,6 +94,14 @@ modules:
         regex: yt-dlp_linux.zip
         folder: yt-dlp
         postinstall: ln -s /usr/share/yt-dlp/yt-dlp_linux /usr/bin/yt-dlp
+      - repo: Kron4ek/Wine-Builds
+        type: share
+        release-regex: (?i)^(?!.*proton).*
+        regex: (?i)(?=.*staging)(?=.*tkg)(?=.*amd64)(?=.*wow64)
+        folder: wine
+        postinstall: |
+          ln -s /usr/share/wine/bin/wine /usr/bin/wine
+          ln -s /usr/share/wine/bin/wineserver /usr/bin/wineserver
       - repo: imputnet/helium-linux
         type: share
         folder: helium
