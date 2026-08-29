@@ -3,7 +3,7 @@
 
 layout=0
 
-sudo /home/artikus/.local/bin/keycode_listener | while read -r line; do
+sudo /usr/bin/keycode_listener | while read -r line; do
     if echo "$line" | grep -qE "CTRL|META"; then
         if echo "$line" | grep -q "pressed"; then
             layout=$(niri msg keyboard-layouts | grep \* | awk '{print $2}')
