@@ -8,12 +8,19 @@ default_regex='^https://(?!.*musl)(?=.*(x86_64|amd64))(?=.*linux).*\.((tar(\.(gz
 for package in "${PACKAGES[@]}"; do
     repo=$(jq -r '.repo' <<< "$package")
     regex=$(jq -r --arg default "$default_regex" '.regex // $default' <<< "$package")
+    release_regex=$(jq -r '.release-regex // empty | .[]' <<< "$package")
     type=$(jq -r '.type' <<< "$package")
     files=$(jq -r '.files // empty | .[]' <<< "$package")
 	postinstall=$(jq -r '.postinstall // empty' <<< "$package")
 
     echo -e "\033[32mInstalling $repo...\033[0m"
-	data="$(curl -s "https://api.github.com/repos/$repo/releases/latest")"
+
+	if [[ -n "$release_regex" ]]; then
+		data="$(curl -s "https://api.github.com/repos/$repo/releases" | jq -c --arg regex "$release_regex" 'first(.[] | select(.name | test($regex)))')"
+	else
+		data="$(curl -s "https://api.github.com/repos/$repo/releases/latest")"
+	fi
+	
 	url="$(echo "$data" | jq -r '.assets[].browser_download_url' | grep -P "$regex" | head -n1)"
     file="${url##*/}"
     curl -LO "$url"
