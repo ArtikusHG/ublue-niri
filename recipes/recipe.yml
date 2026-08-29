@@ -65,6 +65,10 @@ modules:
   #      install: # system flatpaks we want all users to have and not remove
   #        - org.gnome.Loupe
   #    - scope: user # Also add Flathub user repo, but no user packages
+  - type: script
+    scripts:
+    - custom-kernel.sh
+    - sudo-rs.sh
   - type: git
     source: local
     packages:
@@ -97,8 +101,4 @@ modules:
     system:
       enabled:
         - ntpd-rs
-  - type: script
-    scripts:
-    - custom-kernel.sh
-    - sudo-rs.sh
-  - type: signing # this sets up the proper policy & signing files for signed images to work full
+  - type: signing
