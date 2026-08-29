@@ -91,7 +91,7 @@ modules:
         type: custom
         regex: yt-dlp_linux.zip
         files:
-          - yt-dlp
+          - yt-dlp_linux
         postinstall: mv /usr/bin/yt-dlp_linux /usr/bin/yt-dlp
   - type: systemd
     system:
