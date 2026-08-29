@@ -68,6 +68,7 @@ modules:
   #        - org.gnome.Loupe
   #    - scope: user # Also add Flathub user repo, but no user packages
   - type: git
+    source: local
     packages:
     - repo: uutils/coreutils
       type: bin
