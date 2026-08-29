@@ -92,11 +92,10 @@ modules:
       - repo: reubeno/brush
         postinstall: ln -sf /usr/bin/brush /usr/bin/bash
       - repo: yt-dlp/yt-dlp
-        type: custom
+        type: share
         regex: yt-dlp_linux.zip
-        files:
-          - yt-dlp_linux
-        postinstall: mv /usr/bin/yt-dlp_linux /usr/bin/yt-dlp
+        folder: yt-dlp
+        postinstall: ln -s /usr/share/yt-dlp/yt-dlp_linux /usr/bin/yt-dlp
   - type: systemd
     system:
       enabled:
