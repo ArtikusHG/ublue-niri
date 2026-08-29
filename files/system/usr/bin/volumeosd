@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+step=0.1
+
+case "$1" in
+    up)
+	if awk "BEGIN {exit !($(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2}') < 1.5)}"; then
+            wpctl set-mute @DEFAULT_SINK@ 0
+            wpctl set-volume @DEFAULT_SINK@ "${step}+"
+	fi
+        ;;
+    down)
+        wpctl set-mute @DEFAULT_SINK@ 0
+        wpctl set-volume @DEFAULT_SINK@ "${step}-"
+        ;;
+    mute)
+        wpctl set-mute @DEFAULT_SINK@ toggle 
+        ;;
+esac
+
+# Get volume and status and send to mako
+volume=$(wpctl get-volume @DEFAULT_SINK@)
+vol_value=$(echo "$volume" | awk '{printf "%.0f%%\n", $2 * 100}')
+vol_status=$(echo "$volume" | cut -d" " -f3)
+
+if [ "$vol_status" = "[MUTED]" ]; then
+    notify-send -a "volume-osd-muted" "$vol_value"
+    exit 0
+fi
+
+#mako-dismiss-by-appname "volume-osd"
+notify-send -a "volume-osd" "$vol_value"

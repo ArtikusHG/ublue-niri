@@ -1,0 +1,7 @@
+#!/bin/bash
+id=$(niri msg -j windows | jq -r --arg app "$2" '.[] | select(.app_id == $app) | .id')
+if [ -z "$id" ]; then
+  exec bash -c "exec $1"
+else
+  niri msg action focus-window --id $id
+fi
