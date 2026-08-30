@@ -62,6 +62,7 @@ modules:
         install:
           - io.github.kolunmi.Bazaar
           - io.mpv.Mpv
+          - net.nokyan.Resources
       - scope: user
         install:
           - org.gimp.GIMP
@@ -70,6 +71,11 @@ modules:
           - org.darktable.Darktable
           - org.onlyoffice.desktopeditors
           - org.qbittorrent.qBittorrent
+          - com.obsproject.Studio
+          - org.kde.kdenlive
+          - org.mixxx.Mixxx
+          - org.musescore.MuseScore
+          - org.pipewire.Helvum
   - type: script
     scripts:
     - custom-kernel.sh
