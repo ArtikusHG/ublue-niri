@@ -114,4 +114,8 @@ modules:
     system:
       enabled:
         - ntpd-rs
+  - type: chezmoi
+    repository: "https://github.com/ArtikusHG/dotfiles"
+    all-users: true
+    file-conflict-policy: replace
   - type: signing
