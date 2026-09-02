@@ -63,8 +63,6 @@ modules:
           - io.github.kolunmi.Bazaar
           - io.mpv.Mpv
           - net.nokyan.Resources
-      - scope: user
-        install:
           - org.gimp.GIMP
           - org.telegram.desktop
           - io.freetubeapp.FreeTube
