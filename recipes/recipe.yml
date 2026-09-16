@@ -43,6 +43,7 @@ modules:
         - wlsunset
         - gvfs-mtp
         - libatomic
+        - flashrom
       exclude:
         - alacritty
         - fuzzel
