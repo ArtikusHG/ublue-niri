@@ -78,7 +78,7 @@ modules:
           - org.pipewire.Helvum
   - type: script
     scripts:
-    - custom-kernel.sh
+    #- custom-kernel.sh
     - sudo-rs.sh
   - type: git
     source: local
